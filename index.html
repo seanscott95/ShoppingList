@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping List</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <img src="./images/note.png" alt="Shopping List" />
+        <h1>Shopping List</h1>
+      </header>
+      <form id="item-form">
+        <div class="input-group">
+          <input
+            type="text"
+            placeholder="Enter Item"
+            id="item-input"
+            name="item"
+          />
+          <button type="submit" class="btn-add-item">
+            <i class="fa-solid fa-plus"></i> Add Item
+          </button>
+        </div>
+      </form>
+
+      <div class="filter">
+        <input type="text" placeholder="Filter Items" id="filter-input" />
+      </div>
+
+      <ul class="item-list">
+        <li class="items">
+          Apples
+          <button class="btn-remove-item">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </li>
+        <li class="items">
+          Orange Juice
+          <button class="btn-remove-item">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </li>
+        <li class="items">
+          Pears
+          <button class="btn-remove-item">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </li>
+        <li class="items">
+          Milk
+          <button class="btn-remove-item">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </li>
+        <li class="items">
+          Toothpaste
+          <button class="btn-remove-item">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </li>
+        <li class="items">
+          Bananas
+          <button class="btn-remove-item">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </li>
+      </ul>
+
+      <button class="btn-clear-items">Clear All</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
