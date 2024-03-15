@@ -1,6 +1,6 @@
 const itemInput = document.querySelector('#item-input');
 const addItemBtn = document.querySelector('.btn-add-item');
-const filterInput = document.querySelector('#filter-input');
+const itemFilter = document.querySelector('#filter-input');
 const itemList = document.querySelector('.item-list');
 const clearBtn = document.querySelector('.btn-clear-items');
 
@@ -26,7 +26,10 @@ const addItem = (e) => {
   const icon = createIcon('fa-solid fa-xmark');
   button.appendChild(icon);
 
+  // Add item to the DOM
   itemList.appendChild(li);
+
+  checkUI();
 
   itemInput.value = '';
 };
@@ -50,6 +53,7 @@ const removeItem = (e) => {
   if (e.target.parentElement.classList.contains('btn-remove-item')) {
     e.target.parentElement.parentElement.remove();
   }
+  checkUI();
 };
 
 // Clear all items from item list
@@ -57,9 +61,24 @@ const clearAllItems = () => {
   while (itemList.firstChild) {
     itemList.firstChild.remove();
   }
+  checkUI();
+};
+
+const checkUI = () => {
+  const items = itemList.querySelectorAll('li');
+
+  if (items.length === 0) {
+    itemFilter.style.display = 'none';
+    clearBtn.style.display = 'none';
+  } else {
+    itemFilter.style.display = 'block';
+    clearBtn.style.display = 'block';
+  }
 }
 
 // Event Listeners
-addItemBtn.addEventListener('submit', addItem);
+addItemBtn.addEventListener('click', addItem);
 itemList.addEventListener('click', removeItem);
 clearBtn.addEventListener('click', clearAllItems);
+
+checkUI();
