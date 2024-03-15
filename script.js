@@ -45,5 +45,21 @@ const createIcon = (classes) => {
   return icon;
 };
 
+// Remove item from item list
+const removeItem = (e) => {
+  if (e.target.parentElement.classList.contains('btn-remove-item')) {
+    e.target.parentElement.parentElement.remove();
+  }
+};
+
+// Clear all items from item list
+const clearAllItems = () => {
+  while (itemList.firstChild) {
+    itemList.firstChild.remove();
+  }
+}
+
 // Event Listeners
-addItemBtn.addEventListener('click', addItem);
+addItemBtn.addEventListener('submit', addItem);
+itemList.addEventListener('click', removeItem);
+clearBtn.addEventListener('click', clearAllItems);
