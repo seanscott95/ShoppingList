@@ -74,11 +74,27 @@ const checkUI = () => {
     itemFilter.style.display = 'block';
     clearBtn.style.display = 'block';
   }
-}
+};
+
+const filterItems = (e) => {
+  const items = itemList.querySelectorAll('li');
+  const filterText = itemFilter.value.toLowerCase();
+  
+  items.forEach((item) => {
+    const itemText = item.firstChild.textContent.toLowerCase();
+
+    if (itemText.indexOf(filterText) !== -1) {
+      item.style.display = 'flex';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+};
 
 // Event Listeners
 addItemBtn.addEventListener('click', addItem);
 itemList.addEventListener('click', removeItem);
 clearBtn.addEventListener('click', clearAllItems);
+itemFilter.addEventListener('input', filterItems);
 
 checkUI();
