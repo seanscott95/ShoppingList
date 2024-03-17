@@ -1,5 +1,5 @@
 const itemInput = document.querySelector('#item-input');
-const addItemBtn = document.querySelector('.btn-add-item');
+const itemForm = document.querySelector('#item-form');
 const itemFilter = document.querySelector('#filter-input');
 const itemList = document.querySelector('.item-list');
 const clearBtn = document.querySelector('.btn-clear-items');
@@ -92,7 +92,7 @@ const filterItems = () => {
 };
 
 // Event Listeners
-addItemBtn.addEventListener('click', addItem);
+itemForm.addEventListener('submit', addItem);
 itemList.addEventListener('click', removeItem);
 clearBtn.addEventListener('click', clearAllItems);
 itemFilter.addEventListener('input', filterItems);
