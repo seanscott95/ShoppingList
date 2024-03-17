@@ -28,6 +28,11 @@ const addItem = (e) => {
     isEditMode = false;
   }
 
+  if (checkIfItemExists(itemValue)) {
+    alert('Item already exists')
+    return;
+  }
+
   addItemToDOM(itemValue);
 
   // Add item to Local Storage
@@ -36,6 +41,11 @@ const addItem = (e) => {
   checkUI();
 
   itemInput.value = '';
+};
+
+const checkIfItemExists = (item) => {
+  const items = getItemsFromLocalStorage();
+  return items.includes(item);
 };
 
 const addItemToDOM = (item) => {
