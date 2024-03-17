@@ -3,6 +3,9 @@ const itemForm = document.querySelector('#item-form');
 const itemFilter = document.querySelector('#filter-input');
 const itemList = document.querySelector('.item-list');
 const clearBtn = document.querySelector('.btn-clear-items');
+const addItemBtn = document.querySelector('.btn-add-item');
+
+let isEditMode = false;
 
 // Creates and adds item to list
 const addItem = (e) => {
@@ -14,6 +17,15 @@ const addItem = (e) => {
   if (itemValue === '') {
     alert('Please enter an item');
     return;
+  }
+
+  if (isEditMode === true) {
+    const item = itemList.querySelector('.edit-mode');
+
+    removeItemFromLocalStorage(item.textContent);
+    item.classList.remove('edit-mode');
+    item.remove();
+    isEditMode = false;
   }
 
   addItemToDOM(itemValue);
@@ -96,6 +108,25 @@ const onItemClick = (e) => {
   if (e.target.parentElement.classList.contains('btn-remove-item')) {
     removeItem(e.target.parentElement.parentElement);
   }
+
+  if (e.target.classList.contains('items')) {
+    editItem(e.target);
+  }
+};
+
+const editItem = (item) => {
+  isEditMode = true;
+
+  itemList.querySelectorAll('li').forEach((item) => {
+    item.style.color = '#000000';
+  });
+
+  item.classList.add('edit-mode');
+
+  itemInput.value = item.textContent;
+
+  addItemBtn.innerHTML = '<i class="fa-solid fa-pen"></i> Update Item';
+  addItemBtn.style.backgroundColor = '#228B22';
 };
 
 // Remove item from item list
@@ -119,6 +150,8 @@ const clearAllItems = () => {
 };
 
 const checkUI = () => {
+  itemInput.value = '';
+
   const items = itemList.querySelectorAll('li');
 
   if (items.length === 0) {
@@ -128,6 +161,10 @@ const checkUI = () => {
     itemFilter.style.display = 'block';
     clearBtn.style.display = 'block';
   }
+  addItemBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Add Item';
+  addItemBtn.style.backgroundColor = '#333';
+
+  isEditMode = false;
 };
 
 const filterItems = () => {
