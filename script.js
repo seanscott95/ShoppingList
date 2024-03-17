@@ -76,12 +76,12 @@ const checkUI = () => {
   }
 };
 
-const filterItems = (e) => {
+const filterItems = () => {
   const items = itemList.querySelectorAll('li');
-  const filterText = itemFilter.value.toLowerCase();
-  
+  const filterText = itemFilter.value.toLowerCase().trim();
+
   items.forEach((item) => {
-    const itemText = item.firstChild.textContent.toLowerCase();
+    const itemText = item.firstChild.textContent.toLowerCase().trim();
 
     if (itemText.indexOf(filterText) !== -1) {
       item.style.display = 'flex';
